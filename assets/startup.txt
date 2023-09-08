@@ -1,0 +1,6 @@
+
+Welcome To PyShell!
+This is a mini-shell made for beginners to learn how shells looks like.
+Any built-in shell programs (examples: BASH, cmd, PowerShell), also works with our shell
+Type __help__ to get more information.
+Edit (project_dir)/assets/startup.txt to change this message.
