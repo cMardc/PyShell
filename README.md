@@ -50,7 +50,7 @@ You can now start using PyShell to run commands and scripts.
 
 PyShell supports the following commands:
 
-- `view`: List files in the current directory.
+- `view`: List visible files and folders in the current directory.
 - `goto <directory>`: Change the current directory.
 - `display <file_path>`: View the contents of a file.
 - `current`: Display the current working directory.
@@ -58,6 +58,11 @@ PyShell supports the following commands:
 - `hide_current`: Hide current directory on start.
 - `create_file <file_name>`: Create a new file
 - `create_folder <folder_name>`: Create a new folder
+- `view_all`: List all files and folders in the current directory.
+- `copy <source_file> <new_file>`: Copy a file/folder
+- `move <source_file> <new_file>`: Move a file/folder
+- `delete <source>`: Delete a file/folder
+- `delete_folder <source>`: Delete a folder
 - `__help__`: Get help about PyShell.
 - `__exit__`: Exit PyShell.
 - `version`: Check version.

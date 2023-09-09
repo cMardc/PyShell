@@ -16,16 +16,23 @@ __help__ - Get help about commands.
 __exit__ - Exits the shell.
 
 Basic commands:
-view - View files and folders in current directory
-goto [directory] - Change current working directory
-display [file] - View contents of a file
-current - Prints current working directory
-show_current - Shows current working directory on left
-hide_current - Hides current working directory on left
-create_file [file] - Creates a new file
-create_folder [folder] - Creates a new folder
-version - Check version
-
+view: List visible files and folders in the current directory.
+goto <directory>: Change the current directory.
+display <file_path>: View the contents of a file.
+current: Display the current working directory.
+show_current: Show current directory on start.
+hide_current: Hide current directory on start.
+create_file <file_name>: Create a new file
+create_folder <folder_name>: Create a new folder
+view_all: List all files and folders in the current directory.
+copy <source_file> <new_file>: Copy a file/folder
+move <source_file> <new_file>: Move a file/folder
+delete <source>: Delete a file/folder
+delete_folder <source>: Delete a folder
+__help__: Get help about PyShell.
+__exit__: Exit PyShell.
+version: Check version.
+<shell_command>: Execute a shell command.
 
 Any builtin commands {example: BASH, cmd, Powershell} will work.
 
