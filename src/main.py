@@ -9,6 +9,48 @@ import tempfile
 from subprocess import call
 import json
 import datetime
+import platform
+import psutil
+
+
+def get_system_info():
+    info = {}
+
+    # Get OS information
+    info["OS"] = platform.system()
+    info["OS Version"] = platform.version()
+
+    # Get machine information
+    info["Machine"] = platform.machine()
+
+    # Get memory information
+    virtual_memory = psutil.virtual_memory()
+    info["Total Memory (RAM)"] = virtual_memory.total
+    info["Available Memory (RAM)"] = virtual_memory.available
+
+    # Get disk space information
+    disk_partitions = psutil.disk_partitions()
+    disk_info = {}
+    for partition in disk_partitions:
+        partition_info = psutil.disk_usage(partition.mountpoint)
+        disk_info[partition.device] = {
+            "Total Space": partition_info.total,
+            "Used Space": partition_info.used,
+            "Free Space": partition_info.free,
+            "File System Type": partition.fstype,
+        }
+    info["Disk Space"] = disk_info
+
+    # Get CPU information
+    cpu_info = {}
+    cpu_info["CPU Cores"] = os.cpu_count()
+    cpu_info["CPU Usage"] = psutil.cpu_percent(interval=1, percpu=True)
+    info["CPU"] = cpu_info
+
+    # Get current user
+    info["Current User"] = os.getenv("USER") or os.getenv("LOGNAME")
+
+    return info
 
 
 def view(directory):
@@ -278,6 +320,18 @@ def main():
         elif input_cmd == "history":
             with open(log_file_path, "r") as log_file:
                 print(log_file.read())
+        elif input_cmd == "info":
+            system_info = get_system_info()
+
+            # Print the collected information
+            for category, data in system_info.items():
+                print(f"{category}:")
+                if isinstance(data, dict):
+                    for key, value in data.items():
+                        print(f"  {key}: {value}")
+                else:
+                    print(f"  {data}")
+                print()
         elif remove_space(input_cmd) != "":
             if input_cmd.strip() != "":
                 try:

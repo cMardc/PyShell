@@ -5,9 +5,15 @@
     "python.formatting.provider": "none",
     "cSpell.words": [
         "addstr",
+        "fstype",
         "getkey",
+        "getlogin",
         "getstr",
+        "LOGNAME",
+        "mountpoint",
         "nvim",
+        "percpu",
+        "psutil",
         "pyshell",
         "rtype",
         "stdscr"
