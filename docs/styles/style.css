@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Baumans&family=Inconsolata:wght@200;300&family=Oswald:wght@200;400&display=swap');
+
+.responsive-image {
+    max-width: 100%;
+
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* Center the image horizontally */
+}
+
+.responsive-banner {
+    max-width: 300px;
+
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* Center the image horizontally */
+}
+
+.center-div {
+    width: 40rem;
+    margin: 0 auto;
+    /* This centers the div horizontally */
+}
+
+.info {
+    background-color: #d5f5e9;
+    margin-top: 20rem;
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden {
+        transition: none;
+    }
+}
+
+.badge_img {
+    border-radius: 20%;
+    background-color: hsla(0, 12%, 74%, 0.603);
+    margin: 10px;
+}
+
+.images:nth-child(1) {
+    transition-delay: 200ms;
+}
+
+.images:nth-child(2) {
+    transition-delay: 400ms;
+}
+
+.images:nth-child(3) {
+    transition-delay: 600ms;
+}
+
+.images {
+    display: flex;
+}
+
+code {
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* You can adjust the shadow values as needed */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

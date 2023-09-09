@@ -2,8 +2,8 @@
 
 import os
 import subprocess
-import Startup
-from colorama import Fore, Style
+import Startup  # @brief Import the Startup module (unclear origin)
+from colorama import Fore, Style  # @brief Import necessary modules
 from pathlib import Path
 import tempfile
 from subprocess import call
@@ -11,10 +11,25 @@ import json
 
 
 def view(directory):
+    """
+    @brief List the contents of a directory.
+
+    @param directory: The directory to list.
+    @type directory: str
+
+    @return: A list of files and folders in the directory.
+    @rtype: list
+    """
     return os.listdir(directory)
 
 
 def create_file(name):
+    """
+    @brief Create an empty file.
+
+    @param name: The name of the file to create.
+    @type name: str
+    """
     try:
         with open(name, "w"):
             pass  # This creates an empty file
@@ -24,6 +39,12 @@ def create_file(name):
 
 
 def create_folder(folder_name):
+    """
+    @brief Create a folder (directory).
+
+    @param folder_name: The name of the folder to create.
+    @type folder_name: str
+    """
     try:
         Path(folder_name).mkdir()
     except Exception as e:
@@ -32,6 +53,12 @@ def create_folder(folder_name):
 
 
 def display(file_path):
+    """
+    @brief Display the contents of a file.
+
+    @param file_path: The path to the file to display.
+    @type file_path: str
+    """
     try:
         with open(file_path, "r") as file:
             contents = file.read()
@@ -42,16 +69,29 @@ def display(file_path):
 
 
 def remove_space(text):
+    """
+    @brief Remove spaces from a text string.
+
+    @param text: The text string to process.
+    @type text: str
+
+    @return: The text string with spaces removed.
+    @rtype: str
+    """
     return text.replace(" ", "")
 
 
 def main():
+    """
+    @brief Main function of the script.
+    """
     json_file_path = "../config/color.json"
     json_file_path2 = "../config/config.json"
 
     color_dict = {}
     config_dict = {}
 
+    # Load color configuration from a JSON file
     try:
         with open(json_file_path, "r") as json_file:
             color_dict = json.load(json_file)
@@ -60,6 +100,7 @@ def main():
     except json.JSONDecodeError as e:
         print(f"Error parsing JSON file: {e}")
 
+    # Load additional configuration from another JSON file
     try:
         with open(json_file_path2, "r") as json_file:
             config_dict = json.load(json_file)
@@ -97,6 +138,7 @@ def main():
                 print(Fore.RESET)
 
     current_dir = os.getcwd()
+
     # Continue until exit
     while True:
         # Print a starting point without '\n'

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyShell</title>
+    <link rel="icon" href="assets/png/python_logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #0074d9;">
+        <a class="navbar-brand" href="#" style="font-family: 'Baumans', cursive;">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 95.481 85.25086452836874" height="50" width="50" data-background-color="#0074d9"
+                preserveAspectRatio="xMidYMid meet" id="tight-bounds">
+                <g><svg viewBox="0 0 95.481 85.25086452836874" height="85.25086452836874" width="95.481">
+                        <g><svg viewBox="0 0 95.481 85.25086452836874" height="85.25086452836874" width="95.481">
+                                <g id="textblocktransform"><svg viewBox="0 0 95.481 85.25086452836874"
+                                        height="85.25086452836874" width="95.481" id="textblock">
+                                        <g><svg viewBox="0 0 95.481 85.25086452836874" height="85.25086452836874"
+                                                width="95.481">
+                                                <g><svg viewBox="0 0 95.481 85.25086452836874"
+                                                        height="85.25086452836874" width="95.481">
+                                                        <g><svg xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                                x="0" y="0"
+                                                                viewBox="5 9.821001052856445 90.00099182128906 80.35800170898438"
+                                                                enable-background="new 0 0 100 100" xml:space="preserve"
+                                                                height="85.25086452836874" width="95.481"
+                                                                class="icon-icon-0" data-fill-palette-color="accent"
+                                                                id="icon-0">
+                                                                <g fill="#ffdc00" data-fill-palette-color="accent">
+                                                                    <polygon
+                                                                        points="53.214,58.036 59.643,58.036 59.643,51.607 53.214,51.607 46.786,51.607 40.357,51.607 40.357,58.036    46.786,58.036  "
+                                                                        fill="#ffdc00"
+                                                                        data-fill-palette-color="accent" />
+                                                                    <rect x="21.071" y="38.75" width="6.429"
+                                                                        height="6.429" fill="#ffdc00"
+                                                                        data-fill-palette-color="accent" />
+                                                                    <rect x="27.5" y="45.179" width="6.429"
+                                                                        height="6.429" fill="#ffdc00"
+                                                                        data-fill-palette-color="accent" />
+                                                                    <path
+                                                                        d="M14.643 90.179h70.715c6.221 0 9.643-3.422 9.643-9.643V19.464c0-6.221-3.425-9.643-9.643-9.643H14.643C8.425 9.821 5 13.243 5 19.464v61.072C5 86.757 8.425 90.179 14.643 90.179zM53.214 19.464h32.144v6.429H53.214V19.464zM40.357 19.464h6.429v6.429h-6.429V19.464zM27.5 19.464h6.429v6.429H27.5V19.464zM14.643 19.464h6.429v6.429h-6.429V19.464zM14.643 35.536c0-1.599 1.617-3.215 3.215-3.215h64.285c1.598 0 3.215 1.616 3.215 3.215v41.785c0 1.598-1.617 3.215-3.215 3.215H17.857c-1.598 0-3.215-1.617-3.215-3.215V35.536z"
+                                                                        fill="#ffdc00"
+                                                                        data-fill-palette-color="accent" />
+                                                                    <rect x="21.071" y="51.607" width="6.429"
+                                                                        height="6.429" fill="#ffdc00"
+                                                                        data-fill-palette-color="accent" />
+                                                                </g>
+                                                            </svg></g>
+                                                    </svg></g>
+                                            </svg></g>
+                                    </svg></g>
+                            </svg></g>
+                    </svg></g>
+                <defs />
+            </svg>
+            PyShell
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/cMardc/PyShell">Github</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/README.html">Documentation</a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+    </nav>
+
+    <div style="background-color: #0074d9;" class="text-center">
+        <img class="img-fluid" src="assets/logos/png/logo-color.png" alt="banner">
+
+
+        <div class="card center-div info hidden" style="width: 40vw;">
+            <div class="card-body">
+                <h5 class="card-title">What is PyShell?</h5>
+                <p class="card-text">
+                    PyShell is a simple, beginner-friendly shell for both shell and Python programming. This README file
+                    provides an overview of the PyShell code and how to use it effectively. It is designed to help
+                    beginners get started with shell and Python scripting in a user-friendly environment.
+                </p>
+                <a href="pages/README.html" class="btn btn-primary">View README</a>
+            </div>
+        </div>
+
+        <section class="center-div hidden" style="max-width: 100%; overflow: hidden; margin-top: 30rem;">
+            <p style="font-family: 'Baumans', cursive; font-size: 45px;">PyShell - Simple and easy</p>
+            <section class="images">
+                <div class="hidden" style="display: inline;">
+                    <img class="badge_img third_hd" src="assets/png/python_logo.png" alt="Python" width="150"
+                        height="150" style="max-width: 100%; height: auto;">
+                </div>
+
+                <div class="hidden" style="display: inline;">
+                    <img class="badge_img second_hd" src="assets/png/json_logo.png" alt="JSON" width="150" height="150"
+                        style="max-width: 100%; height: auto;">
+                </div>
+
+
+                <div class="hidden" style="display: inline;">
+                    <img class="badge_img first_hd" src="assets/png/terminal_logo.png" alt="Terminal" width="150"
+                        height="150" style="max-width: 100%; height: auto;">
+                </div>
+            </section>
+        </section>
+
+        <section class="center-div hidden" style="margin-top: 30rem; width: 80rem;">
+            <div class="row">
+
+                <div class="col">
+
+                    <p style="font-family: 'Baumans', cursive; font-size: 25px;">
+                        PyShell is a Python script that provides a command-line interface for executing shell commands
+                        and
+                        Python
+                        scripts. It allows you to navigate directories, view files, and run shell commands or Python
+                        scripts in
+                        a simple and interactive manner. It is designed with beginners in mind, making it an excellent
+                        tool for
+                        learning shell and Python programming.
+                    </p>
+                </div>
+
+                <div class="col ">
+                    <img class="responsive-banner" src="assets/png/python_logo.png" alt="Python">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="center-div hidden" style="margin-top: 30rem; width: 80rem;">
+            <div class="row">
+
+
+
+                <div class="col ">
+                    <img class="responsive-banner" src="assets/png/terminal_logo.png" alt="Terminal">
+                </div>
+
+                <div class="col">
+
+                    <p style="font-family: 'Baumans', cursive; font-size: 25px;">
+                    <p style="font-size: 25px; font-family: 'Baumans', cursive;">Some examples</p>
+                    <ul style="font-size: 20px; text-decoration: none; font-style: normal;">
+                        <li><code>view</code>: List files in the current directory.</li>
+                        <li><code>goto &lt;directory&gt;</code>: Change the current directory.</li>
+                        <li><code>display &lt;file_path&gt;</code>: View the contents of a file.</li>
+                        <li><code>current</code>: Display the current working directory.</li>
+                        <li><code>show_current</code>: Show current directory on start.</li>
+                        <li><code>hide_current</code>: Hide current directory on start.</li>
+                        <li><code>create_file &lt;file_name&gt;</code>: Create a new file</li>
+                        <li><code>create_folder &lt;folder_name&gt;</code>: Create a new folder</li>
+                        <li><code>__help__</code>: Get help about PyShell.</li>
+                        <li><code>__exit__</code>: Exit PyShell.</li>
+                        <li><code>version</code>: Check version.</li>
+                        <li><code>&lt;shell_command&gt;</code>: Execute a shell command.</li>
+                    </ul>
+
+                    </p>
+                </div>
+
+
+            </div>
+        </section>
+
+        <footer class="bg-dark text-white py-5" style="margin-top: 20rem;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>About PyShell</h4>
+                        <p>PyShell is a simple, beginner-friendly shell for both shell and Python programming. It's
+                            designed
+                            to help beginners get started with shell and Python scripting in a user-friendly
+                            environment.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="https://github.com/cMardc/PyShell">GitHub</a></li>
+                            <li><a href="https://github.com/cMardc/PyShell">Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Contact Us</h4>
+                        <p>If you have any questions or feedback, please feel free to <a
+                                href="https://github.com/cMardc">contact us</a>.</p>
+                    </div>
+                </div>
+                <hr>
+                <p class="text-center">&copy; 2023 PyShell | Released under the <a
+                        href="https://en.wikipedia.org/wiki/MIT_License">MIT License</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script defer src="scripts/script.js"></script>
+
+</body>
+
+</html>

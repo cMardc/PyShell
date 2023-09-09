@@ -1,0 +1,90 @@
+/* Reset some default browser styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color and add some spacing to the content */
+body {
+    background-color: #f0f0f0;
+}
+
+/* Style the header text */
+h1 {
+    color: #333;
+}
+
+/* Style the links in the table of contents */
+ul li a {
+    text-decoration: none;
+    color: #00ff37;
+}
+
+a {
+    color: #00ff37;
+}
+
+/* Style headings for sections */
+h2 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    margin-top: 20px;
+}
+
+/* Style code blocks */
+pre {
+    background-color: #768ba0;
+    border: 1px solid #768ba0;
+    padding: 10px;
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+/* Style code snippets within paragraphs */
+code {
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 2px 4px;
+    font-family: Consolas, monospace;
+    color: rgb(108, 64, 189);
+}
+
+/* Style the table of contents list */
+ol {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Style list items in the table of contents */
+ol li {
+    margin-bottom: 10px;
+}
+
+/* Style links within paragraphs */
+p a {
+    color: #00ff37;
+}
+
+/* Style the footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+
+    color: #b33636;
+}
+
+/* Style links in the footer */
+footer a {
+    color: #00ff37;
+    text-decoration: none;
+}
+
+/* Style links in the footer when hovered */
+footer a:hover {
+    text-decoration: underline;
+}
+
+.container_div {
+    padding: 40px;
+}
