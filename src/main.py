@@ -85,8 +85,11 @@ def main():
     """
     @brief Main function of the script.
     """
-    json_file_path = "../config/color.json"
-    json_file_path2 = "../config/config.json"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = os.path.dirname(script_dir)
+
+    json_file_path = os.path.join(script_dir, "config", "color.json")
+    json_file_path2 = os.path.join(script_dir, "config", "config.json")
 
     color_dict = {}
     config_dict = {}

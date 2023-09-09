@@ -1,5 +1,6 @@
 {
     "show_dir": false,
+    "log_dir": "",
     "version": 0.1,
     "name": "PyShell"
 }
