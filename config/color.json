@@ -1,0 +1,7 @@
+{
+    "STARTUP": "MAGENTA",
+    "HELP": "MAGENTA",
+    "SIGN": "BLUE",
+    "INPUT": "WHITE",
+    "DIR": "GREEN"
+}

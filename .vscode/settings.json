@@ -4,7 +4,11 @@
     },
     "python.formatting.provider": "none",
     "cSpell.words": [
+        "addstr",
+        "getkey",
+        "getstr",
         "nvim",
-        "pyshell"
+        "pyshell",
+        "stdscr"
     ]
 }
