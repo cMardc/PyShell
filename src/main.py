@@ -8,6 +8,7 @@ from pathlib import Path
 import tempfile
 from subprocess import call
 import json
+import datetime
 
 
 def view(directory):
@@ -90,6 +91,7 @@ def main():
 
     json_file_path = os.path.join(script_dir, "config", "color.json")
     json_file_path2 = os.path.join(script_dir, "config", "config.json")
+    log_file_path = os.path.join(script_dir, "log", "history.log")
 
     color_dict = {}
     config_dict = {}
@@ -195,6 +197,9 @@ def main():
                     print(Fore.WHITE, end="")
 
         input_cmd = input()
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open(log_file_path, "a") as log_file:
+            log_file.write(f"{timestamp} : {input_cmd}\n")
         if input_cmd == "__exit__":  # exit case
             break
         elif input_cmd == "__help__":
@@ -270,6 +275,9 @@ def main():
                     print("Error while loading version")
             else:
                 print("Error while loading config.json")
+        elif input_cmd == "history":
+            with open(log_file_path, "r") as log_file:
+                print(log_file.read())
         elif remove_space(input_cmd) != "":
             if input_cmd.strip() != "":
                 try:
