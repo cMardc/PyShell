@@ -2,7 +2,7 @@
 
 import os
 import subprocess
-import Startup  # @brief Import the Startup module (unclear origin)
+import Startup  # @brief Import the Startup module
 from colorama import Fore, Style  # @brief Import necessary modules
 from pathlib import Path
 import tempfile
@@ -11,6 +11,64 @@ import json
 import datetime
 import platform
 import psutil
+import shutil
+
+
+def mv(source, destination):
+    try:
+        shutil.move(source, destination)
+    except FileNotFoundError:
+        print(Fore.RED + f"Error: '{source}' not found." + Fore.RESET)
+    except PermissionError:
+        print(
+            Fore.RED
+            + f"Error: Permission denied for '{source}' or '{destination}'"
+            + Fore.RESET
+        )
+
+
+def cp(source, destination):
+    try:
+        shutil.copy(source, destination)
+    except FileNotFoundError:
+        print(Fore.RED + f"Error: '{source}' not found." + Fore.RESET)
+    except PermissionError:
+        print(
+            Fore.RED
+            + f"Error: Permission denied for '{source}' or '{destination}'"
+            + Fore.RESET
+        )
+
+
+def rm(file_or_directory):
+    try:
+        if os.path.isfile(file_or_directory):
+            os.remove(file_or_directory)
+        elif os.path.isdir(file_or_directory):
+            shutil.rmtree(file_or_directory)
+        else:
+            print(
+                Fore.RED
+                + f"Error: '{file_or_directory}' is not a file or directory."
+                + Fore.RESET
+            )
+    except FileNotFoundError:
+        print(Fore.RED + f"Error: '{file_or_directory}' not found." + Fore.RESET)
+    except PermissionError:
+        print(
+            Fore.RED
+            + f"Error: Permission denied for '{file_or_directory}'"
+            + Fore.RESET
+        )
+
+
+def rmdir(directory):
+    try:
+        os.rmdir(directory)
+    except FileNotFoundError:
+        print(Fore.RED + f"Error: '{directory}' not found." + Fore.RESET)
+    except PermissionError:
+        print(Fore.RED + f"Error: Permission denied for '{directory}'" + Fore.RESET)
 
 
 def get_system_info():
@@ -63,6 +121,19 @@ def view(directory):
     @return: A list of files and folders in the directory.
     @rtype: list
     """
+
+    normal_contents = []
+    try:
+        for item in os.listdir(directory):
+            item_path = os.path.join(directory, item)
+            if not os.path.basename(item_path).startswith("."):
+                normal_contents.append(item)
+    except FileNotFoundError:
+        print(f"Error: Directory '{directory}' not found.")
+    return normal_contents
+
+
+def view_all(directory):
     return os.listdir(directory)
 
 
@@ -143,18 +214,18 @@ def main():
         with open(json_file_path, "r") as json_file:
             color_dict = json.load(json_file)
     except FileNotFoundError:
-        print(f"JSON file not found at {json_file_path}")
+        print(Fore.RED + f"JSON file not found at {json_file_path}" + Fore.RESET)
     except json.JSONDecodeError as e:
-        print(f"Error parsing JSON file: {e}")
+        print(Fore.RED + f"Error parsing JSON file: {e}" + Fore.RESET)
 
     # Load additional configuration from another JSON file
     try:
         with open(json_file_path2, "r") as json_file:
             config_dict = json.load(json_file)
     except FileNotFoundError:
-        print(f"JSON file not found at {json_file_path2}")
+        print(Fore.RED + f"JSON file not found at {json_file_path2}" + Fore.RESET)
     except json.JSONDecodeError as e:
-        print(f"Error parsing JSON file: {e}")
+        print(Fore.RED + f"Error parsing JSON file: {e}" + Fore.RESET)
 
     show_dir = False
 
@@ -265,7 +336,12 @@ def main():
         elif input_cmd == "view":
             files = view(current_dir)
             for file in files:
-                print(file, end=" ")
+                print(f"'{file}'", end=" ")
+            print("")
+        elif input_cmd == "view_all":
+            files = view_all(current_dir)
+            for file in files:
+                print(f"'{file}'", end=" ")
             print("")
         elif input_cmd.startswith("goto "):
             target_dir = input_cmd[5:]  # Extract the directory after "goto "
@@ -273,7 +349,7 @@ def main():
                 os.chdir(target_dir)  # Change to the target directory
                 current_dir = os.getcwd()  # Update the current directory
             except FileNotFoundError:
-                print("Directory not found: " + target_dir)
+                print(Fore.RED + "Directory not found: " + target_dir + Fore.RESET)
         elif input_cmd.startswith("display "):
             file_path = input_cmd[8:]
             display(file_path)
@@ -286,9 +362,11 @@ def main():
                 with open(json_file_path2, "w") as json_file:
                     json.dump(config_dict, json_file, indent=4)
             except FileNotFoundError:
-                print(f"JSON file not found at {json_file_path2}")
+                print(
+                    Fore.RED + f"JSON file not found at {json_file_path2}" + Fore.RESET
+                )
             except Exception as e:
-                print(f"Error writing to JSON file: {e}")
+                print(Fore.RED + f"Error writing to JSON file: {e}" + Fore.RESET)
         elif input_cmd == "hide_current":
             show_dir = False
             config_dict["show_dir"] = False
@@ -296,9 +374,11 @@ def main():
                 with open(json_file_path2, "w") as json_file:
                     json.dump(config_dict, json_file, indent=4)
             except FileNotFoundError:
-                print(f"JSON file not found at {json_file_path2}")
+                print(
+                    Fore.RED + f"JSON file not found at {json_file_path2}" + Fore.RESET
+                )
             except Exception as e:
-                print(f"Error writing to JSON file: {e}")
+                print(Fore.RED + f"Error writing to JSON file: {e}" + Fore.RESET)
         elif input_cmd.startswith("create_file "):
             file_name = input_cmd[12:]
             create_file(file_name)
@@ -314,9 +394,9 @@ def main():
                         + str(config_dict["version"])
                     )
                 else:
-                    print("Error while loading version")
+                    print(Fore.RED + "Error while loading version" + Fore.RESET)
             else:
-                print("Error while loading config.json")
+                print(Fore.RED + "Error while loading config.json" + Fore.RESET)
         elif input_cmd == "history":
             with open(log_file_path, "r") as log_file:
                 print(log_file.read())
@@ -332,6 +412,18 @@ def main():
                 else:
                     print(f"  {data}")
                 print()
+        elif input_cmd.startswith("move "):
+            _, source, destination = input_cmd.split()
+            mv(source, destination)
+        elif input_cmd.startswith("copy "):
+            _, source, destination = input_cmd.split()
+            cp(source, destination)
+        elif input_cmd.startswith("delete "):
+            _, file_or_directory = input_cmd.split()
+            rm(file_or_directory)
+        elif input_cmd.startswith("delete_folder "):
+            _, directory = input_cmd.split()
+            rmdir(directory)
         elif remove_space(input_cmd) != "":
             if input_cmd.strip() != "":
                 try:

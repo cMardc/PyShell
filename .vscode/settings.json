@@ -16,6 +16,7 @@
         "psutil",
         "pyshell",
         "rtype",
-        "stdscr"
+        "stdscr",
+        "tablefmt"
     ]
 }
