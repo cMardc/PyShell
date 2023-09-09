@@ -14,6 +14,14 @@ import shutil
 
 
 def mv(source, destination):
+    """
+    @brief Move a file or directory from source to destination.
+
+    @param source: The source path.
+    @type source: str
+    @param destination: The destination path.
+    @type destination: str
+    """
     try:
         shutil.move(source, destination)
     except FileNotFoundError:
@@ -27,6 +35,14 @@ def mv(source, destination):
 
 
 def cp(source, destination):
+    """
+    @brief Copy a file from source to destination.
+
+    @param source: The source path.
+    @type source: str
+    @param destination: The destination path.
+    @type destination: str
+    """
     try:
         if os.path.exists(source):
             if os.path.isfile(source):
@@ -48,6 +64,12 @@ def cp(source, destination):
 
 
 def rm(file_or_directory):
+    """
+    @brief Remove a file or directory.
+
+    @param file_or_directory: The path to the file or directory to remove.
+    @type file_or_directory: str
+    """
     try:
         if os.path.isfile(file_or_directory):
             os.remove(file_or_directory)
@@ -70,6 +92,12 @@ def rm(file_or_directory):
 
 
 def rmdir(directory):
+    """
+    @brief Remove an empty directory.
+
+    @param directory: The directory to remove.
+    @type directory: str
+    """
     try:
         if os.path.isdir(directory):
             os.rmdir(directory)
@@ -82,6 +110,12 @@ def rmdir(directory):
 
 
 def get_system_info():
+    """
+    @brief Get system information.
+
+    @return: A dictionary containing system information.
+    @rtype: dict
+    """
     info = {}
 
     # Get OS information
@@ -131,7 +165,6 @@ def view(directory):
     @return: A list of files and folders in the directory.
     @rtype: list
     """
-
     normal_contents = []
     try:
         for item in os.listdir(directory):
@@ -144,6 +177,15 @@ def view(directory):
 
 
 def view_all(directory):
+    """
+    @brief List all contents of a directory.
+
+    @param directory: The directory to list.
+    @type directory: str
+
+    @return: A list of all files and folders in the directory.
+    @rtype: list
+    """
     return os.listdir(directory)
 
 
@@ -153,9 +195,7 @@ def create_file(name):
 
     @param name: The name of the file to create.
     @type name: str
-
     """
-
     if "/" in str(name):
         raise NameError("Can't include '/' in names")
         print(Fore.RED + f"Can't include '/' in file names")
