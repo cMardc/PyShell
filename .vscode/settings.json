@@ -9,6 +9,7 @@
         "getkey",
         "getlogin",
         "getstr",
+        "isfolder",
         "LOGNAME",
         "mountpoint",
         "nvim",

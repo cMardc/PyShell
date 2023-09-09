@@ -28,7 +28,15 @@ def mv(source, destination):
 
 def cp(source, destination):
     try:
-        shutil.copy(source, destination)
+        if os.path.exists(source):
+            if os.path.isfile(source):
+                shutil.copy(source, destination)
+            else:
+                raise IsADirectoryError(
+                    Fore.RED + "Source is not a valid file." + Fore.RESET
+                )
+        else:
+            raise FileNotFoundError(Fore.RED + "Source file not found" + Fore.RESET)
     except FileNotFoundError:
         print(Fore.RED + f"Error: '{source}' not found." + Fore.RESET)
     except PermissionError:
@@ -63,7 +71,10 @@ def rm(file_or_directory):
 
 def rmdir(directory):
     try:
-        os.rmdir(directory)
+        if os.path.isdir(directory):
+            os.rmdir(directory)
+        else:
+            raise NameError(Fore.RED + "Source is not a directory" + Fore.RESET)
     except FileNotFoundError:
         print(Fore.RED + f"Error: '{directory}' not found." + Fore.RESET)
     except PermissionError:
@@ -142,9 +153,17 @@ def create_file(name):
 
     @param name: The name of the file to create.
     @type name: str
+
     """
+
+    if "/" in str(name):
+        raise NameError("Can't include '/' in names")
+        print(Fore.RED + f"Can't include '/' in file names")
+        print(Fore.RESET, end="")
+        return
+
     try:
-        with open(name, "w"):
+        with open(str(name), "w"):
             pass  # This creates an empty file
     except Exception as e:
         print(Fore.RED + f"An error occurred: {str(e)}")
@@ -158,6 +177,7 @@ def create_folder(folder_name):
     @param folder_name: The name of the folder to create.
     @type folder_name: str
     """
+    folder_name = str(folder_name)
     try:
         Path(folder_name).mkdir()
     except Exception as e:
@@ -398,7 +418,10 @@ def main():
                 print(Fore.RED + f"Error writing to JSON file: {e}" + Fore.RESET)
         elif input_cmd.startswith("create_file "):
             file_name = input_cmd[12:]
-            create_file(file_name)
+            try:
+                create_file(file_name)
+            except NameError as e:
+                print(Fore.RED + str(e) + Fore.RESET)
         elif input_cmd.startswith("create_folder "):
             folder_name = input_cmd[14:]
             create_folder(folder_name)
@@ -434,7 +457,14 @@ def main():
             mv(source, destination)
         elif input_cmd.startswith("copy "):
             _, source, destination = input_cmd.split()
-            cp(source, destination)
+            try:
+                cp(source, destination)
+            except FileNotFoundError as e:
+                print(str(e))
+            except NameError as e:
+                print(str(e))
+            except Exception as e:
+                print("Unknown error: " + str(e))
         elif input_cmd.startswith("delete "):
             _, file_or_directory = input_cmd.split()
             rm(file_or_directory)
