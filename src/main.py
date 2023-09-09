@@ -2,7 +2,6 @@
 
 import os
 import subprocess
-import Startup  # @brief Import the Startup module
 from colorama import Fore, Style  # @brief Import necessary modules
 from pathlib import Path
 import tempfile
@@ -204,10 +203,28 @@ def main():
 
     json_file_path = os.path.join(script_dir, "config", "color.json")
     json_file_path2 = os.path.join(script_dir, "config", "config.json")
+    json_file_path3 = os.path.join(script_dir, "config", "texts.json")
     log_file_path = os.path.join(script_dir, "log", "history.log")
+
+    help_text = ""
+    startup_text = ""
 
     color_dict = {}
     config_dict = {}
+    text_dict = {}
+
+    try:
+        with open(json_file_path3, "r") as json_file:
+            texts_dict = json.load(json_file)
+    except FileNotFoundError:
+        print(Fore.RED + f"JSON file not found at {json_file_path3}" + Fore.RESET)
+    except json.JSONDecodeError as e:
+        print(Fore.RED + f"Error parsing JSON file: {e}" + Fore.RESET)
+
+    if texts_dict:
+        if texts_dict["startup_text"] and texts_dict["help_text"]:
+            startup_text = texts_dict["startup_text"]
+            help_text = texts_dict["help_text"]
 
     # Load color configuration from a JSON file
     try:
@@ -234,25 +251,25 @@ def main():
             show_dir = config_dict["show_dir"]
 
     if not color_dict:
-        print(Fore.MAGENTA + Startup.startup_text)
+        print(Fore.MAGENTA + startup_text)
         print(Fore.RESET)
     else:
         if color_dict["STARTUP"]:
             current_color = color_dict["STARTUP"]
             if current_color == "RED":
-                print(Fore.RED + Startup.startup_text)
+                print(Fore.RED + startup_text)
                 print(Fore.RESET)
             elif current_color == "BLUE":
-                print(Fore.BLUE + Startup.startup_text)
+                print(Fore.BLUE + startup_text)
                 print(Fore.RESET)
             elif current_color == "GREEN":
-                print(Fore.GREEN + Startup.startup_text)
+                print(Fore.GREEN + startup_text)
                 print(Fore.RESET)
             elif current_color == "WHITE":
-                print(Fore.WHITE + Startup.startup_text)
+                print(Fore.WHITE + startup_text)
                 print(Fore.RESET)
             elif current_color == "MAGENTA":
-                print(Fore.MAGENTA + Startup.startup_text)
+                print(Fore.MAGENTA + startup_text)
                 print(Fore.RESET)
 
     current_dir = os.getcwd()
@@ -332,7 +349,7 @@ def main():
                     elif current_color == "WHITE":
                         print(Fore.WHITE, end="")
 
-            print(Startup.help_text)
+            print(help_text)
         elif input_cmd == "view":
             files = view(current_dir)
             for file in files:
