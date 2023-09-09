@@ -213,6 +213,18 @@ def main():
         elif input_cmd.startswith("create_folder "):
             folder_name = input_cmd[14:]
             create_folder(folder_name)
+        elif input_cmd == "version":
+            if config_dict:
+                if config_dict["version"] and config_dict["name"]:
+                    print(
+                        config_dict["name"]
+                        + " - version "
+                        + str(config_dict["version"])
+                    )
+                else:
+                    print("Error while loading version")
+            else:
+                print("Error while loading config.json")
         elif remove_space(input_cmd) != "":
             if input_cmd.strip() != "":
                 try:

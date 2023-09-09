@@ -60,6 +60,7 @@ PyShell supports the following commands:
 - `create_folder <folder_name>`: Create a new folder
 - `__help__`: Get help about PyShell.
 - `__exit__`: Exit PyShell.
+- `version`: Check version.
 - `<shell_command>`: Execute a shell command.
 
 

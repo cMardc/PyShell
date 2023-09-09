@@ -1,3 +1,5 @@
 {
-    "show_dir": false
+    "show_dir": false,
+    "version": 0.1,
+    "name": "PyShell"
 }

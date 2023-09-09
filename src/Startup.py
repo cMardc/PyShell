@@ -24,6 +24,7 @@ show_current - Shows current working directory on left
 hide_current - Hides current working directory on left
 create_file [file] - Creates a new file
 create_folder [folder] - Creates a new folder
+version - Check version
 
 
 Any builtin commands {example: BASH, cmd, Powershell} will work.
