@@ -1,5 +1,6 @@
 #!/bin/python3
 
+# imports
 import os
 import subprocess
 from colorama import Fore, Style  # @brief Import necessary modules
