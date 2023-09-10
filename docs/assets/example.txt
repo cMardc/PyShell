@@ -1,0 +1,23 @@
+$ goto /
+$ current
+/
+$ show_current
+/$ hide_current
+$ view
+'snap' 'srv' 'var' 'lib64' 'lib' 'tmp' 'bin' 'libx32' 'root' 'cdrom' 'run' 'sys' 'sbin' 'dev' 'opt' 'boot' 'lost+found' 'media' 'swapfile' 'lib32' 'etc' 'home' 'mnt' 'proc' 'usr' 
+$ goto home
+$ view
+'root' 'cmard' 
+$ goto cmard
+$ create_folder test
+$ goto test
+$ view
+
+$ create_file test.sh
+$ edit test.sh
+$ # wrote -> echo 'Hello, World!'   
+Invalid command: # wrote -> echo 'Hello, World!'
+$ bash test.sh
+$ Hello, World!
+
+$ __exit__
