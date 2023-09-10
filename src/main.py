@@ -11,6 +11,9 @@ import datetime
 import platform
 import psutil
 import shutil
+import editor
+import curses
+import sys
 
 
 def mv(source, destination):
@@ -511,6 +514,9 @@ def main():
         elif input_cmd.startswith("delete_folder "):
             _, directory = input_cmd.split()
             rmdir(directory)
+        elif input_cmd.startswith("edit "):
+            _, file_name = input_cmd.split()
+            curses.wrapper(editor.main, file_name)
         elif remove_space(input_cmd) != "":
             if input_cmd.strip() != "":
                 try:
