@@ -58,6 +58,7 @@ PyShell supports the following commands:
 - `hide_current`: Hide current directory on start.
 - `create_file <file_name>`: Create a new file
 - `create_folder <folder_name>`: Create a new folder
+- `edit <filename>`: Edit a file using basic text editor.
 - `view_all`: List all files and folders in the current directory.
 - `copy <source_file> <new_file>`: Copy a file/folder
 - `move <source_file> <new_file>`: Move a file/folder
