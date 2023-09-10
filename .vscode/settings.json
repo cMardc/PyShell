@@ -5,18 +5,23 @@
     "python.formatting.provider": "none",
     "cSpell.words": [
         "addstr",
+        "editwin",
         "fstype",
+        "getch",
         "getkey",
         "getlogin",
+        "getmaxyx",
         "getstr",
         "isfolder",
         "LOGNAME",
         "mountpoint",
+        "newwin",
         "nvim",
         "percpu",
         "psutil",
         "pyshell",
         "rtype",
+        "scrollok",
         "stdscr",
         "tablefmt"
     ]
