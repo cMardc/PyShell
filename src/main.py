@@ -11,7 +11,7 @@ import datetime
 import platform
 import psutil
 import shutil
-import editor
+import PYeditor
 import curses
 import sys
 
@@ -516,7 +516,7 @@ def main():
             rmdir(directory)
         elif input_cmd.startswith("edit "):
             _, file_name = input_cmd.split()
-            curses.wrapper(editor.main, file_name)
+            curses.wrapper(PYeditor.main, file_name)
         elif remove_space(input_cmd) != "":
             if input_cmd.strip() != "":
                 try:
